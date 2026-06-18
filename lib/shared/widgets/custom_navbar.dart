@@ -1,3 +1,5 @@
+import 'package:cash_control/assets/icons/icons_app.dart';
+import 'package:cash_control/components/icon_svg.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -7,34 +9,91 @@ class NavbarCashControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBar(
-      height: 60,
-      backgroundColor: AppColors.surface,
-      surfaceTintColor: Colors.transparent,
-      shadowColor: Colors.transparent,
-      labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-      destinations: const [
-        NavigationDestination(
-          icon: Icon(Icons.home_outlined),
-          selectedIcon: Icon(Icons.home),
-          label: 'Home',
+    return Container(
+      height: 84,
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: AppColors.border,
+            width: 2,
+            style: BorderStyle.solid,
+          ),
         ),
-        NavigationDestination(
-          icon: Icon(Icons.account_balance_wallet_outlined),
-          selectedIcon: Icon(Icons.account_balance_wallet),
-          label: 'Wallet',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.bar_chart_outlined),
-          selectedIcon: Icon(Icons.bar_chart),
-          label: 'Stats',
-        ),
-        NavigationDestination(
-          icon: Icon(Icons.settings_outlined),
-          selectedIcon: Icon(Icons.settings),
-          label: 'Settings',
-        ),
-      ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 2,
+            children: [
+              CustomSvgIcon(
+                svgString: SvgIcons.homeIcon,
+                color: page == 'Inicío'
+                    ? AppColors.primary
+                    : AppColors.textMuted,
+                size: 24,
+              ),
+              Text(
+                'Inicío',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: page == 'Inicío'
+                      ? AppColors.primary
+                      : AppColors.textMuted,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 2,
+            children: [
+              CustomSvgIcon(
+                svgString: SvgIcons.textLeftIcon,
+                color: page == 'Despesas'
+                    ? AppColors.primary
+                    : AppColors.textMuted,
+                size: 24,
+              ),
+              Text(
+                'Despesas',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: page == 'Despesas'
+                      ? AppColors.primary
+                      : AppColors.textMuted,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 2,
+            children: [
+              CustomSvgIcon(
+                svgString: SvgIcons.profileUserIcon,
+                color: page == 'Perfil'
+                    ? AppColors.primary
+                    : AppColors.textMuted,
+                size: 24,
+              ),
+              Text(
+                'Perfil',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: page == 'Perfil'
+                      ? AppColors.primary
+                      : AppColors.textMuted,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

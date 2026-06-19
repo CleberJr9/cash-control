@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomSvgIcon extends StatefulWidget {
+class CustomSvgIcon extends StatelessWidget {
   const CustomSvgIcon({
     super.key,
     this.width,
@@ -18,20 +18,15 @@ class CustomSvgIcon extends StatefulWidget {
   final double size;
 
   @override
-  State<CustomSvgIcon> createState() => _CustomSvgIconState();
-}
-
-class _CustomSvgIconState extends State<CustomSvgIcon> {
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width ?? widget.size,
-      height: widget.height ?? widget.size,
+      width: width ?? size,
+      height: height ?? size,
       child: SvgPicture.string(
-        widget.svgString,
-        color: widget.color,
-        width: widget.width ?? widget.size,
-        height: widget.height ?? widget.size,
+        svgString,
+        width: width ?? size,
+        height: height ?? size,
+        colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       ),
     );
   }

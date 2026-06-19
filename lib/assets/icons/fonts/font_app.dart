@@ -20,6 +20,11 @@ class AppTextStyles {
     fontSize: 14,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle bodyBold = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+  );
 
   static const TextStyle title = TextStyle(
     fontFamily: fontFamily,
@@ -29,7 +34,7 @@ class AppTextStyles {
 
   static const TextStyle heading = TextStyle(
     fontFamily: fontFamily,
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: FontWeight.w700,
   );
 }

@@ -15,4 +15,9 @@ class SvgIcons {
 <path d="M14.2 4.6C14.2 6.58822 12.5882 8.2 10.6 8.2C8.61177 8.2 7 6.58822 7 4.6C7 2.61177 8.61177 1 10.6 1C12.5882 1 14.2 2.61177 14.2 4.6Z" stroke="#222124" stroke-width="2"/>
 </svg>
 ''';
+  static const plusIcon = '''
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.8 1L5.8 10.6M10.6 5.8L1 5.8" stroke="black" stroke-width="2" stroke-linecap="round"/>
+</svg>
+''';
 }

@@ -1,4 +1,5 @@
 import 'package:cash_control/assets/icons/icons_app.dart';
+import 'package:cash_control/components/button_app.dart';
 import 'package:cash_control/components/icon_svg.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/pages/dashboard/widgets/card_balance.dart';
@@ -61,6 +62,11 @@ class _MyHomePageState extends State<MyHomePage> {
               Dashboard(
                 values: [120000, 180000, 150000, 210000, 170000, 241830],
                 totalValue: 241830,
+              ),
+              AppButton(
+                label: "Adicionar despesa",
+                onPressed: () {},
+                fullWidth: true,
               ),
             ],
           ),

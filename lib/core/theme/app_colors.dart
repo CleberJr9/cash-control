@@ -23,6 +23,7 @@ abstract class AppColors {
   static const textPrimary = Color(0xFF1A211D);
   static const textSecondary = Color(0xFF7A837D);
   static const textMuted = Color(0xFF9AA39E);
+  static const textbutton = Color(0xFFFFFFFF);
 
   // Accent
   static const accentBlue = Color(0xFF2A6FDB);

@@ -20,7 +20,7 @@ class CardBalanceState extends State<CardBalance> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 154,
+      constraints: BoxConstraints(minHeight: 154, minWidth: double.infinity),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.primary,

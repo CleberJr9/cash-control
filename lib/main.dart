@@ -1,4 +1,5 @@
 import 'package:cash_control/assets/icons/icons_app.dart';
+import 'package:cash_control/components/app_switch.dart';
 import 'package:cash_control/components/button_app.dart';
 import 'package:cash_control/components/icon_svg.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
@@ -68,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {},
                 fullWidth: true,
               ),
+              AppSwitch(),
             ],
           ),
         ),

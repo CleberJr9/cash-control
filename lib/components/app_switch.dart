@@ -29,7 +29,7 @@ class AppSwitchState extends State<AppSwitch> {
       trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
       thumbColor: WidgetStateProperty.all(Colors.white),
       activeTrackColor: AppColors.primary,
-      inactiveTrackColor: AppColors.textMuted.withOpacity(0.3),
+      inactiveTrackColor: AppColors.textMuted.withValues(alpha: 0.3),
     );
   }
 }

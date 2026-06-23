@@ -1,4 +1,3 @@
-import 'package:cash_control/assets/icons/fonts/font_app.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +32,7 @@ class AppButton extends StatelessWidget {
         style: ButtonStyle(
           side: WidgetStateProperty.all(BorderSide.none),
           backgroundColor: WidgetStateProperty.all(AppColors.primary),
-          shape: MaterialStateProperty.all(
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           ),
         ),

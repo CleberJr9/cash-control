@@ -27,7 +27,7 @@ class CardBalanceState extends State<CardBalance> {
         borderRadius: BorderRadius.circular(24.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 8.0,
             spreadRadius: 0.0,
             offset: const Offset(0.0, 0.0),
@@ -74,7 +74,7 @@ class CardBalanceState extends State<CardBalance> {
                 borderRadius: BorderRadius.circular(8.0),
                 child: LinearProgressIndicator(
                   value: _progress,
-                  backgroundColor: AppColors.segment.withOpacity(0.5),
+                  backgroundColor: AppColors.segment.withValues(alpha: 0.5),
                   minHeight: 8,
                   valueColor: AlwaysStoppedAnimation<Color>(AppColors.surface),
                 ),

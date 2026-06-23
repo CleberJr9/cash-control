@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:cash_control/assets/icons/fonts/font_app.dart';
 import 'package:cash_control/core/theme/utils/format_currency.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -22,8 +21,9 @@ class DashboardState extends State<Dashboard> {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(24.0),
+
         border: Border.all(
-          color: AppColors.textMuted.withOpacity(0.2),
+          color: AppColors.textMuted.withValues(alpha: 0.2),
           width: 1,
         ),
       ),
@@ -65,7 +65,7 @@ class DashboardState extends State<Dashboard> {
                         toY: value,
                         color: isLast
                             ? AppColors.primary
-                            : AppColors.primary.withOpacity(0.3),
+                            : AppColors.primary.withValues(alpha: 0.3),
                         width: 24,
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -79,8 +79,9 @@ class DashboardState extends State<Dashboard> {
                       getTitlesWidget: (value, meta) {
                         const labels = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6'];
                         final index = value.toInt();
-                        if (index < 0 || index >= labels.length)
+                        if (index < 0 || index >= labels.length) {
                           return const SizedBox();
+                        }
                         return Text(
                           labels[index],
                           style: AppTextStyles.caption.copyWith(

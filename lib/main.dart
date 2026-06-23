@@ -5,6 +5,7 @@ import 'package:cash_control/components/icon_svg.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/pages/dashboard/widgets/card_balance.dart';
 import 'package:cash_control/pages/dashboard/widgets/dashboard.dart';
+import 'package:cash_control/pages/dashboard/widgets/filter_date.dart';
 import 'package:cash_control/shared/widgets/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -60,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
             spacing: 24,
             children: [
               CardBalance(budget: 750000, moneySpent: 241830),
+              FilterDashboard(),
               Dashboard(
                 values: [120000, 180000, 150000, 210000, 170000, 241830],
                 totalValue: 241830,

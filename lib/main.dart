@@ -6,6 +6,7 @@ import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/pages/dashboard/widgets/card_balance.dart';
 import 'package:cash_control/pages/dashboard/widgets/dashboard.dart';
 import 'package:cash_control/pages/dashboard/widgets/filter_date.dart';
+import 'package:cash_control/pages/expenses/widgets/expense_row.dart';
 import 'package:cash_control/shared/widgets/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -59,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fullWidth: true,
               ),
               AppSwitch(),
+              ExpenserRow(category: 'teste', title: 'title', amount: 1000),
             ],
           ),
         ),

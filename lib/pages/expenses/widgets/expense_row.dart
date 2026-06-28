@@ -66,7 +66,7 @@ class ExpenseRowState extends State<ExpenserRow> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '+ R\$ ${formatCurrency(widget.amount)}',
+                  '- ${formatCurrency(widget.amount)}',
                   style: AppTextStyles.titleMax.copyWith(
                     color: AppColors.textPrimary,
                     fontSize: 14,

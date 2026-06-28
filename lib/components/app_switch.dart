@@ -1,4 +1,5 @@
 import 'package:cash_control/core/theme/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppSwitch extends StatefulWidget {
@@ -19,7 +20,7 @@ class AppSwitchState extends State<AppSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    return Switch(
+    return CupertinoSwitch(
       value: _value,
       onChanged: (val) {
         setState(() => _value = val);
@@ -27,7 +28,7 @@ class AppSwitchState extends State<AppSwitch> {
       },
       trackOutlineWidth: WidgetStateProperty.all(0),
       trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
-      thumbColor: WidgetStateProperty.all(Colors.white),
+      thumbColor: AppColors.surface,
       activeTrackColor: AppColors.primary,
       inactiveTrackColor: AppColors.textMuted.withValues(alpha: 0.3),
     );

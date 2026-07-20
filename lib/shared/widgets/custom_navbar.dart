@@ -24,7 +24,9 @@ class NavbarCashControl extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Column(
+            // inicio
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             spacing: 2,
             children: [
               CustomSvgIcon(
@@ -47,7 +49,9 @@ class NavbarCashControl extends StatelessWidget {
             ],
           ),
           Column(
+            // despesas
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             spacing: 2,
             children: [
               CustomSvgIcon(
@@ -70,7 +74,9 @@ class NavbarCashControl extends StatelessWidget {
             ],
           ),
           Column(
+            // perfil
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             spacing: 2,
             children: [
               CustomSvgIcon(

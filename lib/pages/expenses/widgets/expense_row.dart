@@ -38,7 +38,7 @@ class ExpenseRowState extends State<ExpenserRow> {
         child: Row(
           spacing: 12,
           children: [
-            CategoryIcon(category: .alimentacao, size: 38),
+            CategoryIcon(category: .FOOD, size: 38),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

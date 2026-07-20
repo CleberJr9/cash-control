@@ -1,4 +1,3 @@
-import 'package:cash_control/assets/icons/fonts/font_app.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/utils/format_currency.dart';
 import 'package:cash_control/core/theme/utils/formate_date_label.dart';

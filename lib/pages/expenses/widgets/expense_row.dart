@@ -2,18 +2,12 @@ import 'package:cash_control/assets/icons/fonts/font_app.dart';
 import 'package:cash_control/components/category_icon.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/utils/format_currency.dart';
+import 'package:cash_control/models/expense/expense.models.dart';
 import 'package:flutter/material.dart';
 
 class ExpenserRow extends StatefulWidget {
-  final String category;
-  final String title;
-  final int amount;
-  const ExpenserRow({
-    super.key,
-    required this.category,
-    required this.title,
-    required this.amount,
-  });
+  final ExpenseModels expense;
+  const ExpenserRow({super.key, required this.expense});
   @override
   State<ExpenserRow> createState() => ExpenseRowState();
 }
@@ -38,7 +32,7 @@ class ExpenseRowState extends State<ExpenserRow> {
         child: Row(
           spacing: 12,
           children: [
-            CategoryIcon(category: .FOOD, size: 38),
+            CategoryIcon(category: widget.expense.category, size: 38),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,14 +40,14 @@ class ExpenseRowState extends State<ExpenserRow> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    widget.title,
+                    widget.expense.title,
                     style: AppTextStyles.title.copyWith(
                       fontSize: 14,
                       color: AppColors.textPrimary,
                     ),
                   ),
                   Text(
-                    widget.category,
+                    widget.expense.category.label,
                     style: AppTextStyles.caption.copyWith(
                       color: AppColors.textSecondary,
                     ),
@@ -66,7 +60,7 @@ class ExpenseRowState extends State<ExpenserRow> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '- ${formatCurrency(widget.amount)}',
+                  '- ${formatCurrency(widget.expense.amount)}',
                   style: AppTextStyles.titleMax.copyWith(
                     color: AppColors.textPrimary,
                     fontSize: 14,

@@ -9,8 +9,8 @@ class CardBalance extends StatefulWidget {
     required this.budget,
     required this.moneySpent,
   });
-  final int budget;
-  final int moneySpent;
+  final double budget;
+  final double moneySpent;
   @override
   State<CardBalance> createState() => CardBalanceState();
 }

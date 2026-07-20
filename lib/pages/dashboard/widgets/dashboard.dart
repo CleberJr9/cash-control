@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
   final List<int> values;
-  final int totalValue;
+  final double totalValue;
   const Dashboard({super.key, required this.values, required this.totalValue});
   @override
   State<Dashboard> createState() => DashboardState();

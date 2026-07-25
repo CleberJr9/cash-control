@@ -1,4 +1,4 @@
-import 'package:cash_control/pages/expenses/expense.dart';
+import 'package:cash_control/pages/login/login.dart';
 
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(fontFamily: 'Inter'),
-      home: const Expense(),
+      home: const Login(),
     );
   }
 }

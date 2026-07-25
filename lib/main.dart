@@ -1,3 +1,4 @@
+import 'package:cash_control/pages/expenses/expense.dart';
 import 'package:cash_control/pages/login/login.dart';
 
 import 'package:flutter/material.dart';
@@ -14,8 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(fontFamily: 'Inter'),
+      theme: ThemeData(fontFamily: 'Manrope'),
       home: const Login(),
     );
   }

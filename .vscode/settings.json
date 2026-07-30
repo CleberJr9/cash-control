@@ -1,0 +1,26 @@
+{
+  // Hot reload SÓ no Cmd+S manual — saves automáticos não recarregam
+  "dart.flutterHotReloadOnSave": "manual",
+  "dart.hotReloadOnSave": "manual",
+
+  // Formata e organiza imports ao salvar
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+
+  // Esconde as pastas geradas da árvore de arquivos
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/build": true,
+    "**/*.g.dart": false
+  }
+}

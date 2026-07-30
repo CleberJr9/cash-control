@@ -38,9 +38,17 @@ class TextFieldCashControl extends StatelessWidget {
             ),
             hintText: hintText,
             hintStyle: AppTextStyles.hintText,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: AppColors.border, width: 1),
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: AppColors.segment, width: 1),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: AppColors.error, width: 1),
             ),
           ),
         ),

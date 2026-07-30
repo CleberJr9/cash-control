@@ -16,6 +16,7 @@ abstract class AppColors {
   static const labelText = Color.fromARGB(255, 92, 95, 93);
   // Borders
   static const border = Color(0xFFECEDE9);
+  static const error = Color(0xFFC9483B);
 
   // States
   static const disabled = Color(0xFFE3E5E1);

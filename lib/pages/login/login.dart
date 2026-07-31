@@ -1,6 +1,7 @@
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/pages/login/widgets/login_form.dart';
 import 'package:cash_control/pages/login/widgets/register_form.dart';
+import 'package:cash_control/pages/login/widgets/reset_password.dart';
 import 'package:flutter/material.dart';
 
 enum LoginEnum { login, register, resetPassword }
@@ -57,7 +58,7 @@ class LoginState extends State<Login> {
                     child: RegisterForm(login: _onLogin, register: _onLogin),
                   )
                 else
-                  Text("tela de recuperar senha"),
+                  Expanded(child: ResetPassForm(login: _onLogin)),
               ],
             ),
           ),

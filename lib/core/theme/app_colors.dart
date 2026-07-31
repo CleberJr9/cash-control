@@ -11,6 +11,7 @@ abstract class AppColors {
   static const background = Color(0xFFFAFAF8);
   static const canvas = Color(0xFFE7E8E4);
   static const surface = Color(0xFFFFFFFF);
+  static const surfaceGreen = Color(0xFFDFF0E9);
 
   // label text
   static const labelText = Color.fromARGB(255, 92, 95, 93);

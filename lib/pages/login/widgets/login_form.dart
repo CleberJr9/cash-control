@@ -86,11 +86,14 @@ class LoginFormState extends State<LoginForm> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "Esqueceu sua senha?",
-                        style: AppTextStyles.labelTextField.copyWith(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight(700),
+                      InkWell(
+                        onTap: widget.resetPassword,
+                        child: Text(
+                          "Esqueceu sua senha?",
+                          style: AppTextStyles.labelTextField.copyWith(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight(700),
+                          ),
                         ),
                       ),
                     ],

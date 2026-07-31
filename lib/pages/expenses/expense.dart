@@ -1,5 +1,6 @@
 import 'package:cash_control/assets/icons/fonts/font_app.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
+import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/core/theme/enums/transaction_category.dart';
 import 'package:cash_control/models/expense/expense.models.dart';
 import 'package:cash_control/models/expense/expense_period.models.dart';
@@ -264,7 +265,7 @@ class Expense extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: NavbarCashControl(page: "Despesas"),
+      bottomNavigationBar: NavbarCashControl(page: PageEnum.expenses),
     );
   }
 }

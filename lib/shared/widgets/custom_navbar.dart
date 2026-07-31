@@ -1,10 +1,11 @@
 import 'package:cash_control/assets/icons/icons_app.dart';
 import 'package:cash_control/components/icon_svg.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
+import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:flutter/material.dart';
 
 class NavbarCashControl extends StatelessWidget {
-  final String page;
+  final PageEnum page;
   const NavbarCashControl({super.key, required this.page});
 
   @override
@@ -31,7 +32,7 @@ class NavbarCashControl extends StatelessWidget {
             children: [
               CustomSvgIcon(
                 svgString: SvgIcons.homeIcon,
-                color: page == 'Inicío'
+                color: page == PageEnum.home
                     ? AppColors.primary
                     : AppColors.textMuted,
                 size: 24,
@@ -40,7 +41,7 @@ class NavbarCashControl extends StatelessWidget {
                 'Inicío',
                 style: TextStyle(
                   fontSize: 12,
-                  color: page == 'Inicío'
+                  color: page == PageEnum.home
                       ? AppColors.primary
                       : AppColors.textMuted,
                   fontWeight: FontWeight.w500,
@@ -56,7 +57,7 @@ class NavbarCashControl extends StatelessWidget {
             children: [
               CustomSvgIcon(
                 svgString: SvgIcons.textLeftIcon,
-                color: page == 'Despesas'
+                color: page == PageEnum.expenses
                     ? AppColors.primary
                     : AppColors.textMuted,
                 size: 24,
@@ -65,7 +66,7 @@ class NavbarCashControl extends StatelessWidget {
                 'Despesas',
                 style: TextStyle(
                   fontSize: 12,
-                  color: page == 'Despesas'
+                  color: page == PageEnum.expenses
                       ? AppColors.primary
                       : AppColors.textMuted,
                   fontWeight: FontWeight.w500,
@@ -81,7 +82,7 @@ class NavbarCashControl extends StatelessWidget {
             children: [
               CustomSvgIcon(
                 svgString: SvgIcons.profileUserIcon,
-                color: page == 'Perfil'
+                color: page == PageEnum.profile
                     ? AppColors.primary
                     : AppColors.textMuted,
                 size: 24,
@@ -90,7 +91,7 @@ class NavbarCashControl extends StatelessWidget {
                 'Perfil',
                 style: TextStyle(
                   fontSize: 12,
-                  color: page == 'Perfil'
+                  color: page == PageEnum.profile
                       ? AppColors.primary
                       : AppColors.textMuted,
                   fontWeight: FontWeight.w500,

@@ -15,17 +15,15 @@ class BackPageIcon extends StatelessWidget {
       ),
       height: 42,
       width: 42,
-      child: Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomSvgIcon(
-              svgString: SvgIcons.arrowLeftIcon,
-              color: AppColors.textSecondary,
-              size: 16,
-            ),
-          ],
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomSvgIcon(
+            svgString: SvgIcons.arrowLeftIcon,
+            color: AppColors.textSecondary,
+            size: 16,
+          ),
+        ],
       ),
     );
   }

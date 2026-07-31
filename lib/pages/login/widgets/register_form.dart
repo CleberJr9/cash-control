@@ -36,7 +36,7 @@ class RegisterFormState extends State<RegisterForm> {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 32,
       children: [
-        Flexible(
+        Expanded(
           child: SingleChildScrollView(
             child: Column(
               spacing: 24,
@@ -79,16 +79,59 @@ class RegisterFormState extends State<RegisterForm> {
                       keyboardType: TextInputType.visiblePassword,
                     ),
                     Row(
-                      spacing: 8,
+                      spacing: 2,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Checkbox(
                           value: _check,
+                          activeColor: AppColors.primary,
+                          checkColor: AppColors.background,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2),
+                          ),
+                          side: BorderSide(
+                            color: AppColors.textMuted,
+                            width: 1,
+                          ),
                           onChanged: (_) {
                             setState(() {
                               _check = !_check;
                             });
                           },
+                        ),
+                        Expanded(
+                          child: Text.rich(
+                            TextSpan(
+                              text: 'Concordo com os ',
+                              style: AppTextStyles.labelTextField.copyWith(
+                                fontWeight: FontWeight(400),
+                                color: AppColors.textSecondary,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: 'Termos de uso',
+                                  style: AppTextStyles.labelTextField.copyWith(
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight(700),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: ' e a ',
+                                  style: AppTextStyles.labelTextField.copyWith(
+                                    fontWeight: FontWeight(400),
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Política de Privacidade',
+                                  style: AppTextStyles.labelTextField.copyWith(
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight(700),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),

@@ -3,18 +3,13 @@ import 'package:cash_control/components/button_app.dart';
 import 'package:cash_control/components/icon_cash_control.dart';
 import 'package:cash_control/components/textfield.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
+import 'package:cash_control/pages/expenses/expense.dart';
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
-  final Function(String email, String senha) onSubmit;
   final VoidCallback? resetPassword;
   final VoidCallback? register;
-  const LoginForm({
-    super.key,
-    this.resetPassword,
-    this.register,
-    required this.onSubmit,
-  });
+  const LoginForm({super.key, this.resetPassword, this.register});
 
   @override
   State<LoginForm> createState() => LoginFormState();
@@ -111,7 +106,10 @@ class LoginFormState extends State<LoginForm> {
             AppButton(
               label: 'Entrar',
               onPressed: () {
-                widget.onSubmit(_emailController.text, _senhaController.text);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Expense()),
+                );
               },
               fullWidth: true,
             ),

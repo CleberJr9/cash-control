@@ -44,10 +44,6 @@ class LoginState extends State<Login> {
                   Expanded(
                     child: Center(
                       child: LoginForm(
-                        onSubmit: (email, senha) {
-                          print(email);
-                          print(senha);
-                        },
                         register: _onRegister,
                         resetPassword: _onResetPassword,
                       ),

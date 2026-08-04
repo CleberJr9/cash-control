@@ -2,6 +2,8 @@ import 'package:cash_control/assets/icons/icons_app.dart';
 import 'package:cash_control/components/icon_svg.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
+import 'package:cash_control/pages/expenses/expense.dart';
+import 'package:cash_control/pages/home/home.dart';
 import 'package:flutter/material.dart';
 
 class NavbarCashControl extends StatelessWidget {
@@ -24,56 +26,74 @@ class NavbarCashControl extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Column(
-            // inicio
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 2,
-            children: [
-              CustomSvgIcon(
-                svgString: SvgIcons.homeIcon,
-                color: page == PageEnum.home
-                    ? AppColors.primary
-                    : AppColors.textMuted,
-                size: 24,
-              ),
-              Text(
-                'Inicío',
-                style: TextStyle(
-                  fontSize: 12,
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Home()),
+              );
+            },
+            child: Column(
+              // inicio
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 2,
+              children: [
+                CustomSvgIcon(
+                  svgString: SvgIcons.homeIcon,
                   color: page == PageEnum.home
                       ? AppColors.primary
                       : AppColors.textMuted,
-                  fontWeight: FontWeight.w500,
+                  size: 24,
                 ),
-              ),
-            ],
+                Text(
+                  'Inicío',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: page == PageEnum.home
+                        ? AppColors.primary
+                        : AppColors.textMuted,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
-          Column(
-            // despesas
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 2,
-            children: [
-              CustomSvgIcon(
-                svgString: SvgIcons.textLeftIcon,
-                color: page == PageEnum.expenses
-                    ? AppColors.primary
-                    : AppColors.textMuted,
-                size: 24,
-              ),
-              Text(
-                'Despesas',
-                style: TextStyle(
-                  fontSize: 12,
+
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Expense()),
+              );
+            },
+            child: Column(
+              // despesas
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 2,
+              children: [
+                CustomSvgIcon(
+                  svgString: SvgIcons.textLeftIcon,
                   color: page == PageEnum.expenses
                       ? AppColors.primary
                       : AppColors.textMuted,
-                  fontWeight: FontWeight.w500,
+                  size: 24,
                 ),
-              ),
-            ],
+                Text(
+                  'Despesas',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: page == PageEnum.expenses
+                        ? AppColors.primary
+                        : AppColors.textMuted,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
+
           Column(
             // perfil
             mainAxisAlignment: MainAxisAlignment.center,

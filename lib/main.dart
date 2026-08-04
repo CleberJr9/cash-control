@@ -1,4 +1,5 @@
 import 'package:cash_control/pages/expenses/expense.dart';
+import 'package:cash_control/pages/home/home.dart';
 import 'package:cash_control/pages/login/login.dart';
 
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Manrope'),
-      home: const Login(),
+      home: const Expense(),
     );
   }
 }

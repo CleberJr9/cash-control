@@ -4,8 +4,8 @@ import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/core/theme/enums/transaction_category.dart';
 import 'package:cash_control/models/expense/expense.models.dart';
 import 'package:cash_control/models/expense/expense_period.models.dart';
-import 'package:cash_control/pages/dashboard/widgets/filter_date.dart';
 import 'package:cash_control/pages/expenses/widgets/expense_period_section.dart';
+import 'package:cash_control/pages/home/widgets/filter_date.dart';
 import 'package:cash_control/shared/widgets/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -257,7 +257,7 @@ class Expense extends StatelessWidget {
                   ),
                 ],
               ),
-              FilterDashboard(),
+              FilterDashboard(onChange: (period) {}),
               ...expensePeriods.map(
                 (exp) => ExpenseSection(expensePeriods: exp),
               ),

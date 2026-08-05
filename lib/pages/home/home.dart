@@ -27,7 +27,7 @@ class Home extends StatelessWidget {
               spacing: 16,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                AppBarHome(month: "Julho", nameUser: "Cleber"),
+                AppBarHome(month: "Julho", nameUser: "Cleber Junior"),
                 CardBalance(budget: 10000, moneySpent: 2000),
                 FilterDashboard(),
                 Dashboard(

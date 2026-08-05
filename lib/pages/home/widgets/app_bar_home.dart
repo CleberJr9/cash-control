@@ -16,6 +16,8 @@ class AppBarHome extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 12,
             children: [
               Text(
@@ -38,20 +40,21 @@ class AppBarHome extends StatelessWidget {
 
             children: [
               Container(
-                height: 52,
-                width: 52,
+                height: 54,
+                width: 54,
                 decoration: BoxDecoration(
                   color: AppColors.surfaceGreen,
-                  borderRadius: BorderRadius.circular(34),
+                  borderRadius: BorderRadius.circular(44),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       firstIndexName(nameUser),
                       style: AppTextStyles.title.copyWith(
                         color: AppColors.primary,
-                        fontSize: 24,
+                        fontSize: 22,
                       ),
                     ),
                   ],

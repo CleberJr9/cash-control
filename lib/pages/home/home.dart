@@ -8,6 +8,7 @@ import 'package:cash_control/pages/home/widgets/card_balance.dart';
 import 'package:cash_control/pages/home/widgets/category.dart';
 import 'package:cash_control/pages/home/widgets/dashboard.dart';
 import 'package:cash_control/pages/home/widgets/filter_date.dart';
+import 'package:cash_control/pages/home/widgets/app_bar_home.dart';
 import 'package:cash_control/shared/widgets/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,7 @@ class Home extends StatelessWidget {
               spacing: 16,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                AppBarHome(month: "Julho", nameUser: "Cleber"),
                 CardBalance(budget: 10000, moneySpent: 2000),
                 FilterDashboard(),
                 Dashboard(

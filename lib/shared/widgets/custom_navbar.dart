@@ -4,6 +4,7 @@ import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/pages/expenses/expense.dart';
 import 'package:cash_control/pages/home/home.dart';
+import 'package:cash_control/pages/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class NavbarCashControl extends StatelessWidget {
@@ -94,30 +95,38 @@ class NavbarCashControl extends StatelessWidget {
             ),
           ),
 
-          Column(
-            // perfil
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 2,
-            children: [
-              CustomSvgIcon(
-                svgString: SvgIcons.profileUserIcon,
-                color: page == PageEnum.profile
-                    ? AppColors.primary
-                    : AppColors.textMuted,
-                size: 24,
-              ),
-              Text(
-                'Perfil',
-                style: TextStyle(
-                  fontSize: 12,
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
+            },
+            child: Column(
+              // perfil
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 2,
+              children: [
+                CustomSvgIcon(
+                  svgString: SvgIcons.profileUserIcon,
                   color: page == PageEnum.profile
                       ? AppColors.primary
                       : AppColors.textMuted,
-                  fontWeight: FontWeight.w500,
+                  size: 24,
                 ),
-              ),
-            ],
+                Text(
+                  'Perfil',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: page == PageEnum.profile
+                        ? AppColors.primary
+                        : AppColors.textMuted,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

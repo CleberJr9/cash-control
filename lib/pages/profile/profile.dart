@@ -1,0 +1,50 @@
+import 'package:cash_control/core/theme/app_colors.dart';
+import 'package:cash_control/core/theme/enums/page_enum.dart';
+import 'package:cash_control/pages/profile/widgets/options_profile.dart';
+import 'package:cash_control/shared/widgets/custom_navbar.dart';
+import 'package:flutter/material.dart';
+
+enum ProfileEnum { profile, options }
+
+class Profile extends StatefulWidget {
+  const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  ProfileEnum _profileType = ProfileEnum.options;
+
+  void _options() {
+    setState(() {
+      _profileType = ProfileEnum.options;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 24,
+              children: [
+                if (_profileType == ProfileEnum.options)
+                  OptionsProfile(nameUer: "Cleber Junior")
+                else
+                  Text("teste"),
+              ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: NavbarCashControl(page: PageEnum.profile),
+    );
+  }
+}

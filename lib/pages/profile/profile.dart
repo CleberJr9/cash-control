@@ -14,13 +14,14 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  // ignore: prefer_final_fields
   ProfileEnum _profileType = ProfileEnum.options;
 
-  void _options() {
-    setState(() {
-      _profileType = ProfileEnum.options;
-    });
-  }
+  // void _options() {
+  //   setState(() {
+  //     _profileType = ProfileEnum.options;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class _ProfileState extends State<Profile> {
               spacing: 24,
               children: [
                 if (_profileType == ProfileEnum.options)
-                  OptionsProfile(nameUer: "Cleber Junior")
+                  OptionsProfile(nameUer: "Cleber Junior", amount: 10000)
                 else
                   Text("teste"),
               ],

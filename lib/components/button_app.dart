@@ -12,6 +12,9 @@ class AppButton extends StatelessWidget {
   final AppButtonSize size;
   final bool isLoading;
   final bool fullWidth;
+  final Color? backgroundColor;
+  final Color borderColor;
+  final Color? labelColor;
 
   const AppButton({
     super.key,
@@ -21,6 +24,9 @@ class AppButton extends StatelessWidget {
     this.size = AppButtonSize.medium,
     this.isLoading = false,
     this.fullWidth = false,
+    required this.backgroundColor,
+    required this.borderColor,
+    this.labelColor = AppColors.primaryLight,
   });
 
   @override
@@ -30,8 +36,10 @@ class AppButton extends StatelessWidget {
       height: 52,
       child: ElevatedButton(
         style: ButtonStyle(
-          side: WidgetStateProperty.all(BorderSide.none),
-          backgroundColor: WidgetStateProperty.all(AppColors.primary),
+          side: WidgetStateProperty.all(
+            BorderSide(color: borderColor, width: 1),
+          ),
+          backgroundColor: WidgetStateProperty.all(backgroundColor),
           shape: WidgetStateProperty.all(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
           ),
@@ -42,7 +50,7 @@ class AppButton extends StatelessWidget {
             : Text(
                 label,
                 style: TextStyle(
-                  color: AppColors.textbutton,
+                  color: labelColor,
                   fontSize: 16,
                   fontWeight: FontWeight.w800,
                 ),

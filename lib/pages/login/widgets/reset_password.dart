@@ -108,7 +108,12 @@ class ResetPassFormState extends State<ResetPassForm> {
           ),
         ),
 
-        AppButton(label: 'Enviar email', fullWidth: true),
+        AppButton(
+          label: 'Enviar email',
+          fullWidth: true,
+          backgroundColor: AppColors.primary,
+          borderColor: AppColors.primary,
+        ),
       ],
     );
   }

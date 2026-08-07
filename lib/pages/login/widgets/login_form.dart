@@ -105,6 +105,8 @@ class LoginFormState extends State<LoginForm> {
           children: [
             AppButton(
               label: 'Entrar',
+              backgroundColor: AppColors.primary,
+              borderColor: AppColors.primaryLight,
               onPressed: () {
                 Navigator.push(
                   context,

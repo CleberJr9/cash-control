@@ -146,7 +146,12 @@ class RegisterFormState extends State<RegisterForm> {
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppButton(label: 'Criar conta', fullWidth: true),
+            AppButton(
+              label: 'Criar conta',
+              fullWidth: true,
+              backgroundColor: AppColors.primary,
+              borderColor: AppColors.primary,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

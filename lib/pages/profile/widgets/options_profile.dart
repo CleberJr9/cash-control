@@ -1,13 +1,18 @@
-import 'dart:math';
-
 import 'package:cash_control/assets/icons/fonts/font_app.dart';
+import 'package:cash_control/components/button_app.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/utils/first_index_name.dart';
+import 'package:cash_control/core/theme/utils/format_currency.dart';
 import 'package:flutter/material.dart';
 
 class OptionsProfile extends StatelessWidget {
   final String nameUer;
-  const OptionsProfile({super.key, required this.nameUer});
+  final double amount;
+  const OptionsProfile({
+    super.key,
+    required this.nameUer,
+    required this.amount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +24,7 @@ class OptionsProfile extends StatelessWidget {
         Text("Perfil", style: AppTextStyles.heading),
         Container(
           width: double.infinity,
+
           decoration: BoxDecoration(
             color: AppColors.surface,
             border: Border.all(color: AppColors.border, width: 1),
@@ -100,7 +106,6 @@ class OptionsProfile extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: min(124, 400),
               decoration: BoxDecoration(
                 color: AppColors.surface,
                 border: Border.all(color: AppColors.border, width: 1),
@@ -108,21 +113,105 @@ class OptionsProfile extends StatelessWidget {
               ),
 
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 12,
+
                 children: [
                   Padding(
                     padding: EdgeInsets.all(12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      spacing: 12,
                       children: [
-                        Text(
-                          "Orçamento mensal",
-                          style: AppTextStyles.body.copyWith(
-                            color: AppColors.textPrimary,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
+                        SizedBox(
+                          height: 38,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            spacing: 16,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Orçamento mensal",
+                                  style: AppTextStyles.body.copyWith(
+                                    color: AppColors.textPrimary,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                formatCurrency(amount),
+                                style: AppTextStyles.body.copyWith(
+                                  color: AppColors.textSecondary,
+                                  fontWeight: FontWeight(600),
+                                  fontSize: 14,
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 16,
+                                color: AppColors.textSecondary,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Divider(
+                          color: AppColors.border,
+                          thickness: 1,
+                          height: 1,
+                        ),
+                        SizedBox(
+                          height: 38,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            spacing: 16,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Notificações",
+                                  style: AppTextStyles.body.copyWith(
+                                    color: AppColors.textPrimary,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+
+                              Switch.adaptive(
+                                value: true,
+                                onChanged: (value) {},
+                              ),
+                            ],
+                          ),
+                        ),
+                        Divider(
+                          color: AppColors.border,
+                          thickness: 1,
+                          height: 1,
+                        ),
+                        SizedBox(
+                          height: 38,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            spacing: 16,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Modo escuro",
+                                  style: AppTextStyles.body.copyWith(
+                                    color: AppColors.textPrimary,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+
+                              Switch.adaptive(
+                                value: true,
+                                onChanged: (value) {},
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -132,6 +221,13 @@ class OptionsProfile extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        AppButton(
+          label: "Sair da conta",
+          fullWidth: true,
+          borderColor: AppColors.error,
+          backgroundColor: AppColors.background,
+          labelColor: AppColors.error,
         ),
       ],
     );

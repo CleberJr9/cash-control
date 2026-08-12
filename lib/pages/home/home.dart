@@ -1,19 +1,30 @@
 import 'package:cash_control/assets/icons/fonts/font_app.dart';
+import 'package:cash_control/components/floating_button.dart';
+import 'package:cash_control/components/new_expense.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/mocks/category.mock.dart';
 import 'package:cash_control/mocks/expenses.mock.dart';
 import 'package:cash_control/pages/expenses/widgets/expense_row.dart';
+import 'package:cash_control/pages/home/widgets/app_bar_home.dart';
 import 'package:cash_control/pages/home/widgets/card_balance.dart';
 import 'package:cash_control/pages/home/widgets/category.dart';
 import 'package:cash_control/pages/home/widgets/dashboard.dart';
 import 'package:cash_control/pages/home/widgets/filter_date.dart';
-import 'package:cash_control/pages/home/widgets/app_bar_home.dart';
 import 'package:cash_control/shared/widgets/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
+  void _onNewExpense(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const NewExpenseSheet(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +110,9 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingButton(
+        onPressed: () => _onNewExpense(context),
       ),
       bottomNavigationBar: NavbarCashControl(page: PageEnum.home),
     );

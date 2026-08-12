@@ -13,7 +13,7 @@ class AppTextStyles {
     fontFamily: fontFamily,
     fontSize: 12.5,
     fontWeight: FontWeight.w700,
-    color: AppColors.textMuted,
+    color: AppColors.labelText,
   );
   static const TextStyle hintText = TextStyle(
     fontFamily: fontFamily,

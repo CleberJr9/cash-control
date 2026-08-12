@@ -21,7 +21,7 @@ class BackPageIcon extends StatelessWidget {
           CustomSvgIcon(
             svgString: SvgIcons.arrowLeftIcon,
             color: AppColors.textSecondary,
-            size: 16,
+            size: 12,
           ),
         ],
       ),

@@ -19,7 +19,7 @@ class TextFieldCashControl extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 4,
+      spacing: 6,
       children: [
         Text(label, style: AppTextStyles.labelTextField),
         TextField(

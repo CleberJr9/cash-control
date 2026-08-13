@@ -30,11 +30,11 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  void _amountMonth() {
-    setState(() {
-      _profileType = ProfileEnum.amountMonth;
-    });
-  }
+  // void _amountMonth() {
+  //   setState(() {
+  //     _profileType = ProfileEnum.amountMonth;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -14,18 +14,25 @@ class CurrencyExpense extends StatefulWidget {
 class _CurrencyExpenseState extends State<CurrencyExpense> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          formatCurrency(widget.amount),
-          style: AppTextStyles.heading.copyWith(
-            fontSize: 32,
-            fontWeight: FontWeight.w800,
-            color: AppColors.primary,
-          ),
+    return Center(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              formatCurrency(widget.amount),
+              textAlign: TextAlign.center,
+              style: AppTextStyles.heading.copyWith(
+                fontSize: 32,
+                fontWeight: FontWeight.w800,
+                color: AppColors.primary,
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

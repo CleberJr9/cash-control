@@ -1,4 +1,6 @@
 import 'package:cash_control/assets/icons/fonts/font_app.dart';
+import 'package:cash_control/components/floating_button.dart';
+import 'package:cash_control/components/new_expense.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/mocks/expense.period.mock.dart';
@@ -9,6 +11,15 @@ import 'package:flutter/material.dart';
 
 class Expense extends StatelessWidget {
   const Expense({super.key});
+  void _showNewExpense(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      useSafeArea: true,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => const NewExpenseSheet(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +63,9 @@ class Expense extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingButton(
+        onPressed: () => _showNewExpense(context),
       ),
       bottomNavigationBar: NavbarCashControl(page: PageEnum.expenses),
     );

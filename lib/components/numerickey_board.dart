@@ -51,6 +51,7 @@ class _NumericKeyboardState extends State<NumericKeyboard> {
       crossAxisSpacing: 2,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
+      childAspectRatio: 1.5,
       children: [
         _Key(value: '1', onTap: () => _onNumberPressed('1')),
         _Key(value: '2', onTap: () => _onNumberPressed('2')),

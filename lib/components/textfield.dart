@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class TextFieldCashControl extends StatelessWidget {
   final String label;
+  final bool? islabelRequired;
   final String hintText;
   final TextInputType keyboardType;
   final TextEditingController controller;
@@ -13,6 +14,7 @@ class TextFieldCashControl extends StatelessWidget {
     required this.controller,
     required this.hintText,
     required this.keyboardType,
+    this.islabelRequired = true,
   });
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,8 @@ class TextFieldCashControl extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 6,
       children: [
-        Text(label, style: AppTextStyles.labelTextField),
+        if (islabelRequired ?? true)
+          Text(label, style: AppTextStyles.labelTextField),
         TextField(
           controller: controller,
           cursorColor: AppColors.primary,

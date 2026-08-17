@@ -150,6 +150,7 @@ class RegisterFormState extends State<RegisterForm> {
               label: 'Criar conta',
               fullWidth: true,
               backgroundColor: AppColors.primary,
+              labelColor: AppColors.textbutton,
               borderColor: AppColors.primary,
             ),
             Row(

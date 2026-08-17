@@ -5,6 +5,7 @@ import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/mocks/category.mock.dart';
 import 'package:cash_control/mocks/expenses.mock.dart';
+import 'package:cash_control/pages/expenses/expense.dart';
 import 'package:cash_control/pages/expenses/widgets/expense_row.dart';
 import 'package:cash_control/pages/home/widgets/app_bar_home.dart';
 import 'package:cash_control/pages/home/widgets/card_balance.dart';
@@ -88,10 +89,16 @@ class Home extends StatelessWidget {
                             fontSize: 16,
                           ),
                         ),
-                        Text(
-                          "Ver todas",
-                          style: AppTextStyles.bodyBold.copyWith(
-                            color: AppColors.primary,
+                        InkWell(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Expense()),
+                          ),
+                          child: Text(
+                            "Ver todas",
+                            style: AppTextStyles.bodyBold.copyWith(
+                              color: AppColors.primary,
+                            ),
                           ),
                         ),
                       ],

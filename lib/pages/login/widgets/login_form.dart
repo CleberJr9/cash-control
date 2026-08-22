@@ -18,12 +18,31 @@ class LoginForm extends StatefulWidget {
 class LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$');
 
   @override
   void dispose() {
     _emailController.dispose();
     _senhaController.dispose();
     super.dispose();
+  }
+
+  String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Informe seu email';
+    }
+    if (!emailRegex.hasMatch(value)) {
+      return 'Insira um email válido';
+    }
+    return null;
+  }
+
+  String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Informe sua senha';
+    }
+    return null;
   }
 
   @override
@@ -61,39 +80,45 @@ class LoginFormState extends State<LoginForm> {
                   ),
                 ],
               ),
-              Column(
-                // form login
-                mainAxisAlignment: MainAxisAlignment.start,
-                spacing: 8,
-                children: [
-                  TextFieldCashControl(
-                    controller: _emailController,
-                    label: "Email",
-                    hintText: "Informe seu Email",
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-                  TextFieldCashControl(
-                    label: "Senha",
-                    controller: _senhaController,
-                    hintText: "Informe sua senha",
-                    keyboardType: TextInputType.visiblePassword,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: widget.resetPassword,
-                        child: Text(
-                          "Esqueceu sua senha?",
-                          style: AppTextStyles.labelTextField.copyWith(
-                            color: AppColors.primary,
-                            fontWeight: FontWeight(700),
+              Form(
+                key: _formKey,
+                child: Column(
+                  // form login
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  spacing: 8,
+                  children: [
+                    TextFieldCashControl(
+                      controller: _emailController,
+                      label: "Email",
+                      hintText: "Informe seu Email",
+                      keyboardType: TextInputType.emailAddress,
+                      validator: validateEmail,
+                    ),
+                    TextFieldCashControl(
+                      label: "Senha",
+                      controller: _senhaController,
+                      validator: validatePassword,
+                      hintText: "Informe sua senha",
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: widget.resetPassword,
+                          child: Text(
+                            "Esqueceu sua senha?",
+                            style: AppTextStyles.labelTextField.copyWith(
+                              color: AppColors.primary,
+                              fontWeight: FontWeight(700),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -110,10 +135,12 @@ class LoginFormState extends State<LoginForm> {
               labelColor: AppColors.textbutton,
 
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Home()),
-                );
+                if (_formKey.currentState!.validate()) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()),
+                  );
+                }
               },
               fullWidth: true,
             ),
@@ -132,7 +159,7 @@ class LoginFormState extends State<LoginForm> {
                   child: Text(
                     "Criar agora",
                     style: AppTextStyles.labelTextField.copyWith(
-                      color: AppColors.primary,
+                      color: const Color.fromARGB(255, 102, 131, 118),
                       fontWeight: FontWeight(700),
                     ),
                   ),

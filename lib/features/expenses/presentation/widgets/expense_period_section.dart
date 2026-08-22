@@ -2,7 +2,7 @@ import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/utils/format_currency.dart';
 import 'package:cash_control/core/theme/utils/formate_date_label.dart';
 import 'package:cash_control/models/expense/expense_period.models.dart';
-import 'package:cash_control/pages/expenses/widgets/expense_row.dart';
+import 'package:cash_control/features/expenses/presentation/widgets/expense_row.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseSection extends StatelessWidget {

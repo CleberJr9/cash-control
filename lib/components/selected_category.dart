@@ -4,7 +4,7 @@ import 'package:cash_control/assets/icons/fonts/font_app.dart';
 import 'package:cash_control/components/category_icon.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/transaction_category.dart';
-import 'package:cash_control/mocks/transactions_category.dart';
+import 'package:cash_control/features/expenses/data/mocks/transactions_category.dart';
 import 'package:flutter/material.dart';
 
 class SelectedCategory extends StatefulWidget {

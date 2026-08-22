@@ -1,4 +1,4 @@
-import 'package:cash_control/models/expense/expense.models.dart';
+import 'package:cash_control/features/expenses/data/models/expense.models.dart';
 
 class ExpensePeriodModels {
   final DateTime date;

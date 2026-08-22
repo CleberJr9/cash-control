@@ -3,9 +3,9 @@ import 'package:cash_control/components/floating_button.dart';
 import 'package:cash_control/components/new_expense.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
-import 'package:cash_control/mocks/expense.period.mock.dart';
-import 'package:cash_control/pages/expenses/widgets/expense_period_section.dart';
-import 'package:cash_control/pages/home/widgets/filter_date.dart';
+import 'package:cash_control/features/expenses/data/mocks/expense.period.mock.dart';
+import 'package:cash_control/features/expenses/presentation/widgets/expense_period_section.dart';
+import 'package:cash_control/features/home/presentation/widgets/filter_date.dart';
 import 'package:cash_control/shared/widgets/custom_navbar.dart';
 import 'package:flutter/material.dart';
 

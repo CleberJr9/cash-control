@@ -2,9 +2,9 @@ import 'package:cash_control/assets/icons/icons_app.dart';
 import 'package:cash_control/components/icon_svg.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
-import 'package:cash_control/pages/expenses/expense.dart';
-import 'package:cash_control/pages/home/home.dart';
-import 'package:cash_control/pages/profile/profile.dart';
+import 'package:cash_control/features/expenses/presentation/pages/expense.dart';
+import 'package:cash_control/features/home/presentation/pages/home.dart';
+import 'package:cash_control/features/profile/presentation/pages/profile.dart';
 import 'package:flutter/material.dart';
 
 class NavbarCashControl extends StatelessWidget {

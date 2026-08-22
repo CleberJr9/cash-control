@@ -3,7 +3,7 @@ import 'package:cash_control/components/back_page_icon.dart';
 import 'package:cash_control/components/button_app.dart';
 import 'package:cash_control/components/textfield.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
-import 'package:cash_control/pages/home/home.dart';
+import 'package:cash_control/features/home/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class RegisterForm extends StatefulWidget {

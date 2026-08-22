@@ -1,4 +1,4 @@
-import 'package:cash_control/pages/login/login.dart';
+import 'package:cash_control/features/auth/presentation/pages/login.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

@@ -18,6 +18,18 @@ class ResetPassForm extends StatefulWidget {
 
 class ResetPassFormState extends State<ResetPassForm> {
   final _emailController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$');
+
+  String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Informe seu email';
+    }
+    if (!emailRegex.hasMatch(value)) {
+      return 'Insira um email válido';
+    }
+    return null;
+  }
 
   @override
   void dispose() {
@@ -95,11 +107,15 @@ class ResetPassFormState extends State<ResetPassForm> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   spacing: 8,
                   children: [
-                    TextFieldCashControl(
-                      controller: _emailController,
-                      label: "Email",
-                      hintText: "Informe seu Email",
-                      keyboardType: TextInputType.emailAddress,
+                    Form(
+                      key: _formKey,
+                      child: TextFieldCashControl(
+                        controller: _emailController,
+                        label: "Email",
+                        hintText: "Informe seu Email",
+                        keyboardType: TextInputType.emailAddress,
+                        validator: validateEmail,
+                      ),
                     ),
                   ],
                 ),
@@ -109,6 +125,9 @@ class ResetPassFormState extends State<ResetPassForm> {
         ),
 
         AppButton(
+          onPressed: () => {
+            if (_formKey.currentState!.validate()) {print('Enviar email')},
+          },
           label: 'Enviar email',
           fullWidth: true,
           backgroundColor: AppColors.primary,

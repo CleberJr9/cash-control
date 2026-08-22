@@ -1,6 +1,6 @@
 import 'package:cash_control/core/theme/enums/transaction_category.dart';
-import 'package:cash_control/models/expense/expense.models.dart';
-import 'package:cash_control/models/expense/expense_period.models.dart';
+import 'package:cash_control/features/expenses/data/models/expense.models.dart';
+import 'package:cash_control/features/expenses/data/models/expense_period.models.dart';
 
 class ExpensePeriodMock {
   static final List<ExpensePeriodModels> expensePeriods = [

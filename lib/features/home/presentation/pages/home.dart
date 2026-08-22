@@ -12,7 +12,7 @@ import 'package:cash_control/features/home/presentation/widgets/card_balance.dar
 import 'package:cash_control/features/home/presentation/widgets/category.dart';
 import 'package:cash_control/features/home/presentation/widgets/dashboard.dart';
 import 'package:cash_control/features/home/presentation/widgets/filter_date.dart';
-import 'package:cash_control/shared/widgets/custom_navbar.dart';
+import 'package:cash_control/components/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {

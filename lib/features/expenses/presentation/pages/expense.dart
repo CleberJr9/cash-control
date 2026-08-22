@@ -6,7 +6,7 @@ import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/features/expenses/data/mocks/expense.period.mock.dart';
 import 'package:cash_control/features/expenses/presentation/widgets/expense_period_section.dart';
 import 'package:cash_control/features/home/presentation/widgets/filter_date.dart';
-import 'package:cash_control/shared/widgets/custom_navbar.dart';
+import 'package:cash_control/components/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
 class Expense extends StatelessWidget {

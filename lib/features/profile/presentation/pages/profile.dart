@@ -2,7 +2,7 @@ import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
 import 'package:cash_control/features/profile/presentation/widgets/options_profile.dart';
 import 'package:cash_control/features/profile/presentation/widgets/profile_edit.dart';
-import 'package:cash_control/shared/widgets/custom_navbar.dart';
+import 'package:cash_control/components/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
 enum ProfileEnum { profile, options, amountMonth }

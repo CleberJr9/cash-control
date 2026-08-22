@@ -2,7 +2,7 @@ import 'package:cash_control/assets/icons/fonts/font_app.dart';
 import 'package:cash_control/components/category_icon.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/utils/format_currency.dart';
-import 'package:cash_control/models/expense/expense.models.dart';
+import 'package:cash_control/features/expenses/data/models/expense.models.dart';
 import 'package:cash_control/features/expenses/presentation/pages/detail_category.dart';
 import 'package:flutter/material.dart';
 

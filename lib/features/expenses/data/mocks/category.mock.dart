@@ -1,5 +1,5 @@
 import 'package:cash_control/core/theme/enums/transaction_category.dart';
-import 'package:cash_control/models/category/category.models.dart';
+import 'package:cash_control/features/expenses/data/models/category.models.dart';
 
 class CategoryMock {
   static final List<CategoryModels> categories = [

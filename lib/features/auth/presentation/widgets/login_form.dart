@@ -3,19 +3,22 @@ import 'package:cash_control/components/button_app.dart';
 import 'package:cash_control/components/icon_cash_control.dart';
 import 'package:cash_control/components/textfield.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
+import 'package:cash_control/features/auth/application/auth_notifier.dart';
+import 'package:cash_control/features/auth/application/auth_state.dart';
 import 'package:cash_control/features/home/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginForm extends StatefulWidget {
+class LoginForm extends ConsumerStatefulWidget {
   final VoidCallback? resetPassword;
   final VoidCallback? register;
   const LoginForm({super.key, this.resetPassword, this.register});
 
   @override
-  State<LoginForm> createState() => LoginFormState();
+  ConsumerState<LoginForm> createState() => LoginFormState();
 }
 
-class LoginFormState extends State<LoginForm> {
+class LoginFormState extends ConsumerState<LoginForm> {
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -45,8 +48,51 @@ class LoginFormState extends State<LoginForm> {
     return null;
   }
 
+  void login() {
+    if (_formKey.currentState!.validate()) {
+      ref
+          .read(authNotifierProvider.notifier)
+          .login(_emailController.text, _senhaController.text);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(authNotifierProvider);
+    final isLoading = authState is AuthStateLoading;
+    ref.listen<AuthState>(authNotifierProvider, (previous, next) {
+      switch (next) {
+        case AuthStateSuccess():
+          if (!mounted) return;
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => Home()),
+          );
+
+        case AuthStateError():
+          if (!mounted) return;
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                next.error,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.primaryLight,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
+              ),
+              backgroundColor: AppColors.textSecondary,
+            ),
+          );
+
+        case AuthStateLoading():
+        case AuthStateInitial():
+          break;
+      }
+    });
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -133,14 +179,9 @@ class LoginFormState extends State<LoginForm> {
               backgroundColor: AppColors.primary,
               borderColor: AppColors.primary,
               labelColor: AppColors.textbutton,
-
+              isLoading: isLoading,
               onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Home()),
-                  );
-                }
+                login();
               },
               fullWidth: true,
             ),

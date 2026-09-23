@@ -9,7 +9,7 @@ class AuthRepository {
   AuthRepository(this._dio);
 
   Future<AuthResponseModels> login(AuthLoginModels credentials) async {
-    final response = await _dio.post('/auth/login', data: credentials.toJson());
+    final response = await _dio.post('auth/login', data: credentials.toJson());
     return AuthResponseModels.fromJson(response.data);
   }
 }

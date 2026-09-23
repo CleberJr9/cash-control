@@ -1,0 +1,1 @@
+enum StorageKeyEnum { accessToken, nameUser }

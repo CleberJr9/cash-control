@@ -72,13 +72,14 @@ class LoginFormState extends ConsumerState<LoginForm> {
 
         case AuthStateError():
           if (!mounted) return;
-
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
                 next.error,
+                textAlign: TextAlign.center,
                 style: AppTextStyles.body.copyWith(
-                  color: AppColors.primaryLight,
+                  color: AppColors.background,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                 ),

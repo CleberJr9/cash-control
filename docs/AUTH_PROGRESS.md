@@ -1,68 +1,125 @@
 # Auth — onde paramos
 
-Snapshot do estado da feature `lib/features/auth/` em 2026-09-03, para retomar depois.
+Snapshot da feature `lib/features/auth/` em **2026-09-23**.
+Substitui o snapshot de 2026-09-03 (o fluxo de login agora está ligado ponta a ponta).
 
-## Estrutura atual
+## Estado atual
 
 ```
 lib/features/auth/
 ├── application/
-│   └── auth_state.dart          # classe vazia — ainda não iniciado
+│   ├── auth_state.dart          # sealed AuthState + 4 variantes
+│   └── auth_notifier.dart       # AuthNotifier + authNotifierProvider
 ├── data/
 │   ├── models/
 │   │   ├── auth_login.models.dart      # request (email, password)
 │   │   └── auth_response.models.dart   # response (accessToken, nameUser)
 │   └── repositories/
-│       └── auth.repository.dart        # AuthRepository.login() + authRepositoryProvider
+│       └── auth.repository.dart        # login() + authRepositoryProvider
 └── presentation/
     ├── pages/
-    │   └── login.dart               # LoginState alterna login/register/reset via enum local
+    │   └── login.dart
     └── widgets/
-        ├── login_form.dart
-        ├── register_form.dart
-        └── reset_password.dart
+        ├── login_form.dart      # LIGADO ao notifier
+        ├── register_form.dart   # ainda solto
+        └── reset_password.dart  # ainda solto
 ```
 
-Infra de suporte já criada fora da feature:
-- `lib/core/http/dio_client.dart` — `Dio` configurado com `Env.apiUrl`, exposto via `dioProvider` (Riverpod).
-- `lib/core/storage/secure_storage.dart` — wrapper de `flutter_secure_storage` (save/read/delete).
+Infra de suporte:
+- `lib/core/http/dio_client.dart` — `Dio` com `Env.apiUrl`, via `dioProvider`.
+- `lib/core/storage/secure_storage.dart` — wrapper + `secureStorageProvider`.
+- `lib/core/theme/enums/storage_key_enum.dart` — `StorageKeyEnum { accessToken, nameUser }`.
 - `lib/core/config/env.dart` — lê `API_URL` do `.env`.
 
-## O que já funciona
+## O fluxo de login está completo
 
-- **Modelos de login**: `AuthLoginModels` (toJson) e `AuthResponseModels` (fromJson) prontos e coerentes com um endpoint `POST /auth/login`.
-- **AuthRepository**: método `login()` já chama `_dio.post('/auth/login', ...)` e desserializa a resposta. Está exposto como Riverpod `Provider` (`authRepositoryProvider`), injetando o `Dio` do `dioProvider`.
-- **UI dos 3 fluxos** (login / cadastro / recuperar senha) está com layout pronto, incluindo validações de formulário client-side:
-  - `login_form.dart`: valida email e senha (apenas "não vazio").
-  - `register_form.dart`: valida nome, email, senha forte (8+ chars, maiúscula, minúscula, número, especial) e confirmação de senha.
-  - `reset_password.dart`: valida email.
-- Navegação entre os três estados é feita localmente em `LoginState` (`login.dart`) via `setState` + enum, sem rotas nomeadas.
+`login_form.dart` → `AuthNotifier.login()` → `AuthRepository.login()` → Dio → volta como `AuthState` → UI reage.
 
-## O que falta / está incompleto
+**`auth_state.dart`** — `sealed class AuthState` com `AuthStateInitial`, `AuthStateLoading`,
+`AuthStateSuccess(accessToken, nameUser)` e `AuthStateError(error)`. Todos os campos
+`required` e não-nuláveis.
 
-1. **`AuthState` está vazia** (`application/auth_state.dart` tem só `class AuthState {}`). Não existe ainda:
-   - Um `Notifier`/`StateNotifier` Riverpod que use `authRepositoryProvider`.
-   - Estados de loading/erro/sucesso do login (hoje não há nenhum feedback de "carregando" ou "erro" na tela).
+**`auth_notifier.dart`** — `Notifier<AuthState>`, `build()` devolve `AuthStateInitial`.
+`login(String email, String password)`:
+1. emite `AuthStateLoading`
+2. monta o `AuthLoginModels` e chama o repository
+3. grava `accessToken` e `nameUser` no `SecureStorage` **antes** de emitir sucesso
+4. emite `AuthStateSuccess`
+5. `on DioException`: ramo de rede/timeout (`connectionTimeout`, `sendTimeout`,
+   `receiveTimeout`, `connectionError`) → mensagem de conexão; depois `switch` por
+   status (401 / 404 / default)
+6. `catch (_)` genérico ao final
 
-2. **Os formulários não chamam o `AuthRepository`.** Tanto `login_form.dart` (linha ~137-144) quanto `register_form.dart` (linha ~237-243) navegam direto para `Home()` só validando o formulário local — não fazem requisição nenhuma. `reset_password.dart` só dá `print('Enviar email')`.
+Propriedade importante: **todo caminho de saída pousa num estado terminal** — nenhum
+deixa `AuthStateLoading` pendurado, o que impede o botão de travar girando.
 
-3. **Sem persistência de sessão.** `SecureStorage` existe mas não é usado em lugar nenhum — o `accessToken` retornado por `AuthResponseModels` não é salvo, nem lido para decidir se o usuário já está logado ao abrir o app (`main.dart` sempre abre em `Login()`).
+**`login_form.dart`** — `ConsumerStatefulWidget` / `ConsumerState`.
+- `ref.watch` no topo do `build` deriva `isLoading` e alimenta o `AppButton`
+  (o componente já desabilita o `onPressed` e troca o label pelo spinner).
+- `ref.listen` **dentro do `build`, antes do `return`** — `switch` exaustivo sobre as
+  quatro variantes, **sem `default`**, com guarda `mounted` antes de tocar em `context`.
+- Sucesso → `Navigator.pushReplacement` para `Home`. Erro → `SnackBar` com a mensagem
+  já traduzida pelo notifier.
+- Método `login()` extraído; o `onPressed` só o chama.
 
-4. **Sem repository/endpoints de registro e reset de senha.** `AuthRepository` só tem `login()`. Não há `register()` nem `resetPassword()`, nem os `models` de request/response para esses fluxos.
+## Decisões tomadas (e por quê)
 
-5. **`DioClient` não anexa o token nas próximas requisições.** Não há `Interceptor` lendo o token salvo e adicionando `Authorization: Bearer ...` nas chamadas autenticadas.
+| Decisão | Motivo | Quando reabrir |
+|---|---|---|
+| `Notifier<AuthState>` em vez de `AsyncNotifier` | A sealed class já modela loading/erro; `AsyncValue<AuthState>` duplicaria os dois | Na restauração de sessão — `AsyncNotifier.build()` pode ser `async`, o que resolve a leitura do storage no boot de graça |
+| Estado carrega `accessToken` + `nameUser` achatados, não o `AuthResponseModels` | `application/` não depende do formato do JSON; mudança de contrato da API morre na `data/` | Se o estado precisar de muitos campos do usuário |
+| `login()` recebe `String email, String password` | `presentation/` não importa de `data/models/`; grafo fica `presentation → application → data` em linha reta | Se o `AuthLoginModels` ganhar campo que não vem de `TextEditingController` (deviceId, token FCM, versão do app) |
+| Token gravado no storage **antes** de emitir sucesso | Quando a UI reage ao sucesso, a sessão já está persistida | — |
+| `switch` sem `default` | Só sem `default` o compilador cobra exaustividade sobre a sealed class | — |
+| Mensagens de erro traduzidas no notifier, não na UI | A `presentation/` não precisa conhecer `DioException`; `AuthStateError.error` já chega pronto pro `SnackBar` | — |
 
-6. **Sem tratamento de erro de rede/API.** Nenhum dos formulários trata `DioException` (ex.: credenciais inválidas, timeout, 500).
+## O que falta
 
-## Sugestão de próximos passos (na ordem)
+### 1. Testar em runtime (próximo passo imediato)
+Nada disso foi executado ainda — só verificado estaticamente (`flutter analyze` limpo).
+Com o Nest em `localhost:3000`:
+- senha errada → esperado `Email ou senha inválidos`
+  (se aparecer "Serviço de autenticação não encontrado", o 404 é a rota, não a credencial)
+- servidor derrubado → esperado `Verifique sua conexão com a internet.`
+- login válido → navega pra `Home`, sem voltar pro login com o botão voltar
+- conferir que o token ficou gravado no storage
 
-1. Modelar o `AuthState` (ex.: `sealed class`/`freezed` com `initial`, `loading`, `authenticated(user)`, `error(message)`).
-2. Criar um `AuthNotifier` (Riverpod `Notifier`/`AsyncNotifier`) que chama `authRepositoryProvider.login()` e expõe esse `AuthState`.
-3. Ligar `login_form.dart` ao notifier: `onPressed` chama o notifier em vez de navegar direto; a tela reage ao estado (loading no botão, mensagem de erro, navegação para `Home` só em caso de sucesso).
-4. Persistir o `accessToken` no `SecureStorage` após login bem-sucedido.
-5. Repetir o padrão para registro e reset de senha (repository methods + ligação na UI).
-6. Adicionar `Interceptor` no `DioClient` para anexar o token e, futuramente, tratar 401 (logout automático).
+### 2. Interceptor no `DioClient`
+Ler `StorageKeyEnum.accessToken.name` do storage e anexar `Authorization: Bearer ...`.
+Tratar 401 com logout automático.
 
-## Observação avulsa (não é sobre auth)
+### 3. Restaurar sessão no arranque
+`main.dart:23` ainda abre direto em `Login()`. A leitura do storage no boot é assíncrona —
+é aqui que a escolha `Notifier` vs `AsyncNotifier` volta à mesa.
 
-Em `register_form.dart`, o checkbox `_check` ("Concordo com os Termos") nunca é validado no `onPressed` — hoje dá pra criar conta mesmo desmarcado. Vale revisar quando voltar nessa tela.
+### 4. Registro e recuperação de senha
+`AuthRepository` só tem `login()`. Faltam `register()` e `resetPassword()`, os models de
+request/response, e ligar `register_form.dart` e `reset_password.dart` ao notifier.
+Hoje o registro navega direto pra `Home` e o reset só dá `print`.
+O padrão já está estabelecido pelo login — deve sair rápido.
+
+### 5. Logout
+Limpar o `SecureStorage` e voltar o estado para `AuthStateInitial`.
+
+## Dívidas pequenas
+
+- `storage_key_enum.dart` está em `core/theme/enums/`; chave de storage não tem relação
+  com tema — o lugar natural é `core/storage/`.
+- `auth.repository.dart` usa `'auth/login'` **sem** barra inicial. Funciona porque
+  `API_URL` termina com `/`. O Dio faz concatenação de string, não resolução de URI
+  (`options.dart:662`), então `'/auth/login'` funcionaria com e sem a barra final —
+  é a forma mais robusta.
+- A mensagem do `case 404` assume "rota não encontrada". Confirmar o que o Nest devolve
+  para credencial inválida.
+- `auth_notifier.dart` lê `secureStorageProvider` duas vezes seguidas (cosmético).
+- Estilo de `break` dentro de `switch` inconsistente entre `auth_notifier.dart` e
+  `login_form.dart` — em Dart 3 ele é desnecessário em casos não-vazios.
+- `reset_password.dart:129` ainda tem `print`.
+- `register_form.dart`: o checkbox `_check` ("Concordo com os Termos") nunca é validado
+  no `onPressed` — dá pra criar conta com ele desmarcado.
+
+## Commits
+
+- `f68e39b` feat: add authState
+- `bc9761d` feat: add notifier auth
+- `login_form.dart` ainda **não commitado**

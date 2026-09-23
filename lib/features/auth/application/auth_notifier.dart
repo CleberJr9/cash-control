@@ -46,7 +46,7 @@ class AuthNotifier extends Notifier<AuthState> {
       }
       final statusCode = e.response?.statusCode;
       switch (statusCode) {
-        case 401:
+        case 409:
           state = AuthStateError(error: 'Email ou senha inválidos');
           break;
         case 404:

@@ -1,8 +1,11 @@
 import 'package:cash_control/assets/icons/fonts/font_app.dart';
+import 'package:cash_control/components/custom_navbar.dart';
 import 'package:cash_control/components/floating_button.dart';
 import 'package:cash_control/components/new_expense.dart';
 import 'package:cash_control/core/theme/app_colors.dart';
 import 'package:cash_control/core/theme/enums/page_enum.dart';
+import 'package:cash_control/features/auth/application/auth_notifier.dart';
+import 'package:cash_control/features/auth/application/auth_state.dart';
 import 'package:cash_control/features/expenses/data/mocks/category.mock.dart';
 import 'package:cash_control/features/expenses/data/mocks/expenses.mock.dart';
 import 'package:cash_control/features/expenses/presentation/pages/expense.dart';
@@ -12,10 +15,10 @@ import 'package:cash_control/features/home/presentation/widgets/card_balance.dar
 import 'package:cash_control/features/home/presentation/widgets/category.dart';
 import 'package:cash_control/features/home/presentation/widgets/dashboard.dart';
 import 'package:cash_control/features/home/presentation/widgets/filter_date.dart';
-import 'package:cash_control/components/custom_navbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Home extends StatelessWidget {
+class Home extends ConsumerWidget {
   const Home({super.key});
   void _onNewExpense(BuildContext context) {
     showModalBottomSheet(
@@ -28,7 +31,9 @@ class Home extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authNotifierProvider);
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -39,7 +44,13 @@ class Home extends StatelessWidget {
               spacing: 16,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                AppBarHome(month: "Julho", nameUser: "Cleber Junior"),
+                AppBarHome(
+                  month: "Julho",
+                  nameUser: switch (authState) {
+                    AuthStateSuccess(:final nameUser) => nameUser,
+                    _ => '',
+                  },
+                ),
                 CardBalance(budget: 10000, moneySpent: 2000),
                 FilterDashboard(),
                 Dashboard(

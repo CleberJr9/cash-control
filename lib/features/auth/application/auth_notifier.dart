@@ -25,10 +25,10 @@ class AuthNotifier extends Notifier<AuthState> {
           .login(credentials);
       await ref
           .read(secureStorageProvider)
-          .save(StorageKeyEnum.accessToken.name, response.accessToken);
+          .save(StorageKeyEnum.accessToken, response.accessToken);
       await ref
           .read(secureStorageProvider)
-          .save(StorageKeyEnum.nameUser.name, response.nameUser);
+          .save(StorageKeyEnum.nameUser, response.nameUser);
       state = AuthStateSuccess(
         accessToken: response.accessToken,
         nameUser: response.nameUser,

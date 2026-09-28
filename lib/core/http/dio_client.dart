@@ -1,4 +1,6 @@
 import 'package:cash_control/core/config/env.dart';
+import 'package:cash_control/core/http/auth_interceptor.dart';
+import 'package:cash_control/core/storage/secure_storage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,5 +18,8 @@ class DioClient {
 }
 
 final dioProvider = Provider<Dio>((ref) {
-  return DioClient.create(Env.apiUrl);
+  final dio = DioClient.create(Env.apiUrl);
+  final storage = ref.read(secureStorageProvider);
+  dio.interceptors.add(AuthInterceptor(storage));
+  return dio;
 });

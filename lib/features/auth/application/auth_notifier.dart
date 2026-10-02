@@ -60,6 +60,16 @@ class AuthNotifier extends Notifier<AuthState> {
       state = AuthStateError(error: 'Erro ao tentar fazer login');
     }
   }
+
+  Future<void> logout() async {
+    try {
+      await Future.wait([
+        ref.read(secureStorageProvider).delete(StorageKeyEnum.accessToken),
+        ref.read(secureStorageProvider).delete(StorageKeyEnum.nameUser),
+      ]);
+    } catch (_) {}
+    state = const AuthStateInitial();
+  }
 }
 
 final authNotifierProvider = NotifierProvider<AuthNotifier, AuthState>(

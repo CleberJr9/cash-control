@@ -1,6 +1,7 @@
 import 'package:cash_control/core/config/env.dart';
 import 'package:cash_control/core/http/auth_interceptor.dart';
 import 'package:cash_control/core/storage/secure_storage.dart';
+import 'package:cash_control/features/auth/application/auth_notifier.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,8 +19,12 @@ class DioClient {
 }
 
 final dioProvider = Provider<Dio>((ref) {
+  Future<void> onLogout() async {
+    await ref.read(authNotifierProvider.notifier).logout();
+  }
+
   final dio = DioClient.create(Env.apiUrl);
   final storage = ref.read(secureStorageProvider);
-  dio.interceptors.add(AuthInterceptor(storage));
+  dio.interceptors.add(AuthInterceptor(storage, onLogout));
   return dio;
 });

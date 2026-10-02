@@ -3,9 +3,9 @@ import 'package:cash_control/core/theme/enums/storage_key_enum.dart';
 import 'package:dio/dio.dart';
 
 class AuthInterceptor extends Interceptor {
-  AuthInterceptor(this._storage);
-
+  final Future<void> Function() _onLogout;
   final SecureStorage _storage;
+  AuthInterceptor(this._storage, this._onLogout);
 
   static const _authRoutes = ['/auth/login', '/auth/register'];
 
@@ -46,12 +46,8 @@ class AuthInterceptor extends Interceptor {
 
     if (!isAuthRoute && err.response?.statusCode == 401) {
       try {
-        await _storage.delete(StorageKeyEnum.accessToken);
-
-        await _storage.delete(StorageKeyEnum.nameUser);
+        await _onLogout();
       } catch (_) {
-        // Falha ao limpar o storage não deve
-        // substituir o erro 401 original.
       } finally {
         handler.next(err);
       }

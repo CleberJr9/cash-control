@@ -7,7 +7,7 @@ class HomeRepository {
   final Dio _dio;
   const HomeRepository(this._dio);
   Future<HomeModels> getHome() async {
-    final response = await _dio.get('/home');
+    final response = await _dio.get('/expenses/home');
     return HomeResponseModels.fromJson(response.data).data;
   }
 }

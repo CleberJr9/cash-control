@@ -89,7 +89,7 @@ class CardBalanceState extends State<CardBalance> {
                 style: AppTextStyles.body.copyWith(color: AppColors.surface),
               ),
               Text(
-                formatCurrency(widget.budget),
+                'de ${formatCurrency(widget.budget)}',
                 style: AppTextStyles.body.copyWith(color: AppColors.surface),
               ),
             ],

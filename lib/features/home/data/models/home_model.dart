@@ -40,14 +40,17 @@ class UserModels {
 class BudgetModels {
   final double monthlyBudget;
   final double spentThisMonth;
+  final String currentMonth;
   const BudgetModels({
     required this.monthlyBudget,
     required this.spentThisMonth,
+    required this.currentMonth,
   });
   factory BudgetModels.fromJson(Map<String, dynamic> json) {
     return BudgetModels(
       monthlyBudget: (json['monthlyBudget'] as num).toDouble(),
       spentThisMonth: (json['spentThisMonth'] as num).toDouble(),
+      currentMonth: json['currentMonth'] as String,
     );
   }
 }

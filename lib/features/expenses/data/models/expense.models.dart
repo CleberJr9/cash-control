@@ -6,7 +6,7 @@ class ExpenseModels {
   final TransactionCategory category;
   final DateTime date;
   final double amount;
-  final String description;
+  final String? description;
   final DateTime? createdAt;
 
   const ExpenseModels({
@@ -15,7 +15,7 @@ class ExpenseModels {
     required this.category,
     required this.date,
     required this.amount,
-    required this.description,
+    this.description,
     this.createdAt,
   });
   factory ExpenseModels.fromJson(Map<String, dynamic> json) {
@@ -25,7 +25,7 @@ class ExpenseModels {
       category: TransactionCategory.fromKey(json['category'] as String),
       date: DateTime.parse(json['date'] as String),
       amount: (json['amount'] as num).toDouble(),
-      description: json['description'] as String,
+      description: json['description'] as String?,
       createdAt: json['createdAt'] != null
           ? DateTime.parse(json['createdAt'] as String)
           : null,

@@ -11,7 +11,8 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AuthState>(authNotifierProvider, (previous, next) {
-      if (previous is AuthStateSuccess && next is AuthStateInitial) {
+      if (previous is AuthStateSuccess && next is AuthStateInitial ||
+          next is AuthStateError) {
         navigatorKey.currentState?.pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const Login()),
           (route) => false,

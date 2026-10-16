@@ -29,7 +29,8 @@ class NavbarCashControl extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Navigator.push(
+              if (page == PageEnum.home) return;
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => Home()),
               );
@@ -63,7 +64,8 @@ class NavbarCashControl extends StatelessWidget {
 
           InkWell(
             onTap: () {
-              Navigator.push(
+              if (page == PageEnum.expenses) return;
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => Expense()),
               );
@@ -97,7 +99,8 @@ class NavbarCashControl extends StatelessWidget {
 
           InkWell(
             onTap: () {
-              Navigator.push(
+              if (page == PageEnum.profile) return;
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => Profile()),
               );

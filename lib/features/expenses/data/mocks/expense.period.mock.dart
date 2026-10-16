@@ -9,7 +9,7 @@ class ExpensePeriodMock {
       sumAmount: 154.40,
       expenses: [
         ExpenseModels(
-          expenseId: '1',
+          id: '1',
           title: 'Almoço',
           category: TransactionCategory.FOOD,
           date: DateTime(2026, 7, 20),
@@ -17,7 +17,7 @@ class ExpensePeriodMock {
           description: 'Almoço no restaurante',
         ),
         ExpenseModels(
-          expenseId: '2',
+          id: '2',
           title: 'Uber',
           category: TransactionCategory.TRANSPORT,
           date: DateTime(2026, 7, 20),
@@ -25,7 +25,7 @@ class ExpensePeriodMock {
           description: 'Corrida para o trabalho',
         ),
         ExpenseModels(
-          expenseId: '3',
+          id: '3',
           title: 'Mercado',
           category: TransactionCategory.FOOD,
           date: DateTime(2026, 7, 20),
@@ -40,7 +40,7 @@ class ExpensePeriodMock {
       sumAmount: 328.75,
       expenses: [
         ExpenseModels(
-          expenseId: '4',
+          id: '4',
           title: 'Combustível',
           category: TransactionCategory.TRANSPORT,
           date: DateTime(2026, 7, 19),
@@ -48,7 +48,7 @@ class ExpensePeriodMock {
           description: 'Abastecimento',
         ),
         ExpenseModels(
-          expenseId: '5',
+          id: '5',
           title: 'Cinema',
           category: TransactionCategory.LEISURE,
           date: DateTime(2026, 7, 19),
@@ -56,7 +56,7 @@ class ExpensePeriodMock {
           description: 'Ingresso',
         ),
         ExpenseModels(
-          expenseId: '6',
+          id: '6',
           title: 'Jantar',
           category: TransactionCategory.FOOD,
           date: DateTime(2026, 7, 19),
@@ -71,7 +71,7 @@ class ExpensePeriodMock {
       sumAmount: 560.00,
       expenses: [
         ExpenseModels(
-          expenseId: '7',
+          id: '7',
           title: 'Internet',
           category: TransactionCategory.LEISURE,
           date: DateTime(2026, 7, 18),
@@ -79,7 +79,7 @@ class ExpensePeriodMock {
           description: 'Mensalidade',
         ),
         ExpenseModels(
-          expenseId: '8',
+          id: '8',
           title: 'Energia',
           category: TransactionCategory.HOUSING,
           date: DateTime(2026, 7, 18),
@@ -87,7 +87,7 @@ class ExpensePeriodMock {
           description: 'Conta de luz',
         ),
         ExpenseModels(
-          expenseId: '9',
+          id: '9',
           title: 'Água',
           category: TransactionCategory.LEISURE,
           date: DateTime(2026, 7, 18),
@@ -95,7 +95,7 @@ class ExpensePeriodMock {
           description: 'Conta de água',
         ),
         ExpenseModels(
-          expenseId: '10',
+          id: '10',
           title: 'Gás',
           category: TransactionCategory.HOUSING,
           date: DateTime(2026, 7, 18),
@@ -110,7 +110,7 @@ class ExpensePeriodMock {
       sumAmount: 1245.90,
       expenses: [
         ExpenseModels(
-          expenseId: '11',
+          id: '11',
           title: 'Notebook',
           category: TransactionCategory.SHOPPING,
           date: DateTime(2026, 7, 17),
@@ -118,7 +118,7 @@ class ExpensePeriodMock {
           description: 'Acessório de trabalho',
         ),
         ExpenseModels(
-          expenseId: '12',
+          id: '12',
           title: 'Mouse',
           category: TransactionCategory.SHOPPING,
           date: DateTime(2026, 7, 17),
@@ -126,7 +126,7 @@ class ExpensePeriodMock {
           description: 'Mouse sem fio',
         ),
         ExpenseModels(
-          expenseId: '13',
+          id: '13',
           title: 'Teclado',
           category: TransactionCategory.SHOPPING,
           date: DateTime(2026, 7, 17),
@@ -141,7 +141,7 @@ class ExpensePeriodMock {
       sumAmount: 215.30,
       expenses: [
         ExpenseModels(
-          expenseId: '14',
+          id: '14',
           title: 'Farmácia',
           category: TransactionCategory.HEALTH,
           date: DateTime(2026, 7, 16),
@@ -149,7 +149,7 @@ class ExpensePeriodMock {
           description: 'Medicamentos',
         ),
         ExpenseModels(
-          expenseId: '15',
+          id: '15',
           title: 'Consulta',
           category: TransactionCategory.HEALTH,
           date: DateTime(2026, 7, 16),
@@ -164,7 +164,7 @@ class ExpensePeriodMock {
       sumAmount: 412.80,
       expenses: [
         ExpenseModels(
-          expenseId: '16',
+          id: '16',
           title: 'Academia',
           category: TransactionCategory.HEALTH,
           date: DateTime(2026, 7, 15),
@@ -172,7 +172,7 @@ class ExpensePeriodMock {
           description: 'Mensalidade',
         ),
         ExpenseModels(
-          expenseId: '17',
+          id: '17',
           title: 'Mercado',
           category: TransactionCategory.FOOD,
           date: DateTime(2026, 7, 15),
@@ -187,7 +187,7 @@ class ExpensePeriodMock {
       sumAmount: 95.00,
       expenses: [
         ExpenseModels(
-          expenseId: '18',
+          id: '18',
           title: 'Café',
           category: TransactionCategory.FOOD,
           date: DateTime(2026, 7, 14),
@@ -195,7 +195,7 @@ class ExpensePeriodMock {
           description: 'Cafeteria',
         ),
         ExpenseModels(
-          expenseId: '19',
+          id: '19',
           title: 'Estacionamento',
           category: TransactionCategory.TRANSPORT,
           date: DateTime(2026, 7, 14),
@@ -203,7 +203,7 @@ class ExpensePeriodMock {
           description: 'Shopping',
         ),
         ExpenseModels(
-          expenseId: '20',
+          id: '20',
           title: 'Lanche',
           category: TransactionCategory.FOOD,
           date: DateTime(2026, 7, 14),

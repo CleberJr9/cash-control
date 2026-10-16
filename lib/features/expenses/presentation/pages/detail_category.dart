@@ -179,7 +179,7 @@ class _DetailCategoryState extends State<DetailCategory> {
                         category: TransactionCategory.FOOD,
                         date: DateTime.now(),
                         description: "Descrição da despesa",
-                        expenseId: "123",
+                        id: "123",
                         createdAt: DateTime.now(),
                       ),
                     ),

@@ -15,6 +15,7 @@ import 'package:cash_control/features/home/presentation/widgets/card_balance.dar
 import 'package:cash_control/features/home/presentation/widgets/category.dart';
 import 'package:cash_control/features/home/presentation/widgets/dashboard.dart';
 import 'package:cash_control/features/home/presentation/widgets/filter_date.dart';
+import 'package:cash_control/features/home/presentation/widgets/home_skelleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -40,92 +41,93 @@ class Home extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              spacing: 16,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                AppBarHome(
-                  month: "Julho",
-                  nameUser: switch (authState) {
-                    AuthStateSuccess(:final nameUser) => nameUser,
-                    _ => '',
-                  },
-                ),
-                CardBalance(budget: 10000, moneySpent: 2000),
-                FilterDashboard(),
-                Dashboard(
-                  totalValue: 15000,
-                  values: [1000, 2000, 3000, 4000, 5000],
-                ),
-                Column(
-                  spacing: 12,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Categorias",
-                          style: AppTextStyles.bodyBold.copyWith(
-                            fontWeight: FontWeight(700),
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      spacing: 4,
-                      children: [
-                        ...CategoryMock.categories.map(
-                          (c) => CategoryAmount(
-                            amount: c.amount,
-                            totalAmount: c.totalAmount,
-                            category: c.category,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 12,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Últimas transações",
-                          style: AppTextStyles.bodyBold.copyWith(
-                            fontWeight: FontWeight(700),
-                            fontSize: 16,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Expense()),
-                          ),
-                          child: Text(
-                            "Ver todas",
-                            style: AppTextStyles.bodyBold.copyWith(
-                              color: AppColors.primary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      spacing: 2,
-                      children: [
-                        ...EspenseMock.expenses.map(
-                          (e) => ExpenserRow(expense: e),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            child: HomeSkelleton(),
+            // child: Column(
+            //   spacing: 16,
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     AppBarHome(
+            //       month: "Julho",
+            //       nameUser: switch (authState) {
+            //         AuthStateSuccess(:final nameUser) => nameUser,
+            //         _ => '',
+            //       },
+            //     ),
+            //     CardBalance(budget: 10000, moneySpent: 2000),
+            //     FilterDashboard(),
+            //     Dashboard(
+            //       totalValue: 15000,
+            //       values: [1000, 2000, 3000, 4000, 5000],
+            //     ),
+            //     Column(
+            //       spacing: 12,
+            //       children: [
+            //         Row(
+            //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //           children: [
+            //             Text(
+            //               "Categorias",
+            //               style: AppTextStyles.bodyBold.copyWith(
+            //                 fontWeight: FontWeight(700),
+            //                 fontSize: 16,
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //         Column(
+            //           spacing: 4,
+            //           children: [
+            //             ...CategoryMock.categories.map(
+            //               (c) => CategoryAmount(
+            //                 amount: c.amount,
+            //                 totalAmount: c.totalAmount,
+            //                 category: c.category,
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //       ],
+            //     ),
+            //     Column(
+            //       mainAxisAlignment: MainAxisAlignment.start,
+            //       spacing: 12,
+            //       children: [
+            //         Row(
+            //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //           children: [
+            //             Text(
+            //               "Últimas transações",
+            //               style: AppTextStyles.bodyBold.copyWith(
+            //                 fontWeight: FontWeight(700),
+            //                 fontSize: 16,
+            //               ),
+            //             ),
+            //             InkWell(
+            //               onTap: () => Navigator.pushReplacement(
+            //                 context,
+            //                 MaterialPageRoute(builder: (context) => Expense()),
+            //               ),
+            //               child: Text(
+            //                 "Ver todas",
+            //                 style: AppTextStyles.bodyBold.copyWith(
+            //                   color: AppColors.primary,
+            //                 ),
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //         Column(
+            //           spacing: 2,
+            //           children: [
+            //             ...EspenseMock.expenses.map(
+            //               (e) => ExpenserRow(expense: e),
+            //             ),
+            //           ],
+            //         ),
+            //       ],
+            //     ),
+            //   ],
+            // ),
           ),
         ),
       ),

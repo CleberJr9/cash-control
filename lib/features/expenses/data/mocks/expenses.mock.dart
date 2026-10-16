@@ -4,7 +4,7 @@ import 'package:cash_control/features/expenses/data/models/expense.models.dart';
 class EspenseMock {
   static final List<ExpenseModels> expenses = [
     ExpenseModels(
-      expenseId: '1',
+      id: '1',
       title: 'Almoço',
       category: TransactionCategory.FOOD,
       date: DateTime(2026, 7, 20),
@@ -12,7 +12,7 @@ class EspenseMock {
       description: 'Restaurante',
     ),
     ExpenseModels(
-      expenseId: '2',
+      id: '2',
       title: 'Café',
       category: TransactionCategory.FOOD,
       date: DateTime(2026, 7, 20),
@@ -20,7 +20,7 @@ class EspenseMock {
       description: 'Padaria',
     ),
     ExpenseModels(
-      expenseId: '3',
+      id: '3',
       title: 'Mercado',
       category: TransactionCategory.FOOD,
       date: DateTime(2026, 7, 19),
@@ -28,7 +28,7 @@ class EspenseMock {
       description: 'Compras do mês',
     ),
     ExpenseModels(
-      expenseId: '4',
+      id: '4',
       title: 'Pizza',
       category: TransactionCategory.FOOD,
       date: DateTime(2026, 7, 18),
@@ -37,7 +37,7 @@ class EspenseMock {
     ),
 
     ExpenseModels(
-      expenseId: '5',
+      id: '5',
       title: 'Uber',
       category: TransactionCategory.TRANSPORT,
       date: DateTime(2026, 7, 20),
@@ -45,7 +45,7 @@ class EspenseMock {
       description: 'Trabalho',
     ),
     ExpenseModels(
-      expenseId: '6',
+      id: '6',
       title: 'Combustível',
       category: TransactionCategory.TRANSPORT,
       date: DateTime(2026, 7, 19),
@@ -53,7 +53,7 @@ class EspenseMock {
       description: 'Gasolina',
     ),
     ExpenseModels(
-      expenseId: '7',
+      id: '7',
       title: 'Estacionamento',
       category: TransactionCategory.TRANSPORT,
       date: DateTime(2026, 7, 18),
@@ -61,7 +61,7 @@ class EspenseMock {
       description: 'Shopping',
     ),
     ExpenseModels(
-      expenseId: '8',
+      id: '8',
       title: 'Ônibus',
       category: TransactionCategory.TRANSPORT,
       date: DateTime(2026, 7, 17),
@@ -70,7 +70,7 @@ class EspenseMock {
     ),
 
     ExpenseModels(
-      expenseId: '9',
+      id: '9',
       title: 'Aluguel',
       category: TransactionCategory.HOUSING,
       date: DateTime(2026, 7, 15),
@@ -78,7 +78,7 @@ class EspenseMock {
       description: 'Mensalidade',
     ),
     ExpenseModels(
-      expenseId: '10',
+      id: '10',
       title: 'Energia',
       category: TransactionCategory.HOUSING,
       date: DateTime(2026, 7, 14),
@@ -86,7 +86,7 @@ class EspenseMock {
       description: 'Conta de luz',
     ),
     ExpenseModels(
-      expenseId: '11',
+      id: '11',
       title: 'Água',
       category: TransactionCategory.HOUSING,
       date: DateTime(2026, 7, 14),
@@ -94,7 +94,7 @@ class EspenseMock {
       description: 'Saneamento',
     ),
     ExpenseModels(
-      expenseId: '12',
+      id: '12',
       title: 'Internet',
       category: TransactionCategory.HOUSING,
       date: DateTime(2026, 7, 13),
@@ -102,7 +102,7 @@ class EspenseMock {
       description: 'Fibra óptica',
     ),
     ExpenseModels(
-      expenseId: '13',
+      id: '13',
       title: 'Gás',
       category: TransactionCategory.HOUSING,
       date: DateTime(2026, 7, 13),
@@ -111,7 +111,7 @@ class EspenseMock {
     ),
 
     ExpenseModels(
-      expenseId: '14',
+      id: '14',
       title: 'Cinema',
       category: TransactionCategory.LEISURE,
       date: DateTime(2026, 7, 18),
@@ -119,7 +119,7 @@ class EspenseMock {
       description: 'Ingresso',
     ),
     ExpenseModels(
-      expenseId: '15',
+      id: '15',
       title: 'Netflix',
       category: TransactionCategory.LEISURE,
       date: DateTime(2026, 7, 12),
@@ -127,7 +127,7 @@ class EspenseMock {
       description: 'Assinatura',
     ),
     ExpenseModels(
-      expenseId: '16',
+      id: '16',
       title: 'Spotify',
       category: TransactionCategory.LEISURE,
       date: DateTime(2026, 7, 11),
@@ -135,7 +135,7 @@ class EspenseMock {
       description: 'Premium',
     ),
     ExpenseModels(
-      expenseId: '17',
+      id: '17',
       title: 'Parque',
       category: TransactionCategory.LEISURE,
       date: DateTime(2026, 7, 10),
@@ -144,7 +144,7 @@ class EspenseMock {
     ),
 
     ExpenseModels(
-      expenseId: '18',
+      id: '18',
       title: 'Tênis',
       category: TransactionCategory.SHOPPING,
       date: DateTime(2026, 7, 16),
@@ -152,7 +152,7 @@ class EspenseMock {
       description: 'Esportivo',
     ),
     ExpenseModels(
-      expenseId: '19',
+      id: '19',
       title: 'Mouse',
       category: TransactionCategory.SHOPPING,
       date: DateTime(2026, 7, 15),
@@ -160,7 +160,7 @@ class EspenseMock {
       description: 'Sem fio',
     ),
     ExpenseModels(
-      expenseId: '20',
+      id: '20',
       title: 'Teclado',
       category: TransactionCategory.SHOPPING,
       date: DateTime(2026, 7, 15),
@@ -168,7 +168,7 @@ class EspenseMock {
       description: 'Mecânico',
     ),
     ExpenseModels(
-      expenseId: '21',
+      id: '21',
       title: 'Fone Bluetooth',
       category: TransactionCategory.SHOPPING,
       date: DateTime(2026, 7, 14),
@@ -176,7 +176,7 @@ class EspenseMock {
       description: 'Headphone',
     ),
     ExpenseModels(
-      expenseId: '22',
+      id: '22',
       title: 'Camiseta',
       category: TransactionCategory.SHOPPING,
       date: DateTime(2026, 7, 13),
@@ -185,7 +185,7 @@ class EspenseMock {
     ),
 
     ExpenseModels(
-      expenseId: '23',
+      id: '23',
       title: 'Farmácia',
       category: TransactionCategory.HEALTH,
       date: DateTime(2026, 7, 20),
@@ -193,7 +193,7 @@ class EspenseMock {
       description: 'Medicamentos',
     ),
     ExpenseModels(
-      expenseId: '24',
+      id: '24',
       title: 'Consulta',
       category: TransactionCategory.HEALTH,
       date: DateTime(2026, 7, 18),
@@ -201,7 +201,7 @@ class EspenseMock {
       description: 'Clínica',
     ),
     ExpenseModels(
-      expenseId: '25',
+      id: '25',
       title: 'Academia',
       category: TransactionCategory.HEALTH,
       date: DateTime(2026, 7, 17),
@@ -209,7 +209,7 @@ class EspenseMock {
       description: 'Mensalidade',
     ),
     ExpenseModels(
-      expenseId: '26',
+      id: '26',
       title: 'Vitaminas',
       category: TransactionCategory.HEALTH,
       date: DateTime(2026, 7, 16),
@@ -217,7 +217,7 @@ class EspenseMock {
       description: 'Suplementos',
     ),
     ExpenseModels(
-      expenseId: '27',
+      id: '27',
       title: 'Exames',
       category: TransactionCategory.HEALTH,
       date: DateTime(2026, 7, 15),
